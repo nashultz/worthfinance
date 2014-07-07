@@ -19,6 +19,7 @@ class FakeAccountsSeeder extends BaseSeeder {
                 $array[] = $this->faker->numberBetween(1,100);
             }
 
+            $this->command->info('Batch #' . $a . ' of ' . ($totalRecordsToCreate / $chunkRecordCount) . ' Added');
             DB::insert('insert into accounts (office_id) values (?)', $array);
         }
 

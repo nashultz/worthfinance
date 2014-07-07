@@ -36,6 +36,8 @@ class FakeLoansSeeder extends BaseSeeder {
                 );
             }
 
+            $this->command->info('Batch #' . $a . ' of ' . ($totalRecordsToCreate / $chunkRecordCount) . ' Added');
+
             DB::table('loans')->insert($array);
         }
 
