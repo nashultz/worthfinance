@@ -16,5 +16,5 @@ Blade::setEscapedContentTags('<%%', '%%>'); // for escaped data
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('site_default');
 });
