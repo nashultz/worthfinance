@@ -7,16 +7,19 @@ class FakeAccountsSeeder extends BaseSeeder {
         DB::connection()->disableQueryLog();
         //DB::table('accounts')->delete();
 
-        $total = 20000;
+        $totalRecordsToCreate = 1000000;
+        $chunkRecordCount = 500;
 
-        for ($i = 1; $i < $total; $i++)
+        for($a = 1; $a <= ($totalRecordsToCreate / $chunkRecordCount); $a++)
         {
-            $db = DB::insert('insert into accounts (office_id) values (?)', array($this->faker->numberBetween(1,100)));
-            
-            //$this->command->info('Account: ' . $i . ' Memory: ' . memory_get_usage());
-            //$this->command->info('Account ' . $i . ' of ' . $total . ' Created');
+            $array = array();
 
-            $db = null;
+            for ($b = 1; $b <= $chunkRecordCount; $b++)
+            {
+                $array[] = $this->faker->numberBetween(1,100);
+            }
+
+            DB::insert('insert into accounts (office_id) values (?)', $array);
         }
 
     }

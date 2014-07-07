@@ -11,22 +11,6 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// Test
-		$this->command->info('Memory: ' . memory_get_usage());
-		$test = new FakeAccountsSeeder();
-		$test->run();
-		$this->command->info('Memory: ' . memory_get_usage());
-
-		unset($test);
-
-		$this->command->info('Memory: ' . memory_get_usage());
-		$test = new FakeAccountsSeeder();
-		$test->run();
-		$this->command->info('Memory: ' . memory_get_usage());
-		
-		unset($test);
-		$this->command->info('Memory: ' . memory_get_usage());
-
 		$this->command->info('Seeding Offices...');
 		//$this->call('FakeOfficeSeeder');
 		$this->command->info('Offices Seeded!!!!');
