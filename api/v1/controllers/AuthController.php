@@ -28,7 +28,7 @@ class AuthController extends BaseController {
 		}
 		else
 		{
-			return Response::json(Auth::User(), 200);
+			return Response::json( [ 'flash' => 'Login Successful', 'user' => Auth::User() ], 200);
 		}
 	}
 

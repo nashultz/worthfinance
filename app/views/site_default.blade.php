@@ -25,7 +25,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3">
-				<div id="flash" class="alert alert-danger" ng-show="flash">
+				<div id="flash" class="alert alert-{{ alert }}" ng-show="flash">
           {{ flash }}
         </div>
       </div>
