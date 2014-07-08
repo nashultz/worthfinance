@@ -5,9 +5,9 @@ class FakeLoansSeeder extends BaseSeeder {
     public function run()
     {
         DB::connection()->disableQueryLog();
-        //DB::table('accounts')->delete();
+        DB::table('loans')->delete();
 
-        $totalRecordsToCreate = 1000000;
+        $totalRecordsToCreate = 5000000;
         $chunkRecordCount = 500;
 
         for($a = 1; $a <= ($totalRecordsToCreate / $chunkRecordCount); $a++)
@@ -19,21 +19,22 @@ class FakeLoansSeeder extends BaseSeeder {
                 $array[] = array(
                     'account_id'=>$this->faker->numberBetween(1,800000),
                     'user_id'=>$this->faker->numberBetween(1,100),
-                    'first_name'=>$this->faker->firstName,
-                    'middle_name'=>$this->faker->firstName,
-                    'last_name'=>$this->faker->lastName,
+                    'first_name'=>'Test_User_' . $a . '_' . $b,    
+                    'middle_name'=>'',
+                    'last_name'=>'Test_User_' . $a . '_' . $b,
                     'suffix'=>'',
-                    'id_number'=>$this->faker->numerify('########'),
-                    'id_state'=>$this->faker->stateAbbr,
-                    'ssn'=>$this->faker->bothify('###-##-####'),
-                    'hphone'=>$this->faker->bothify('###-###-####'),
-                    'wphone'=>$this->faker->bothify('###-###-####'),
-                    'payment_amt'=>$this->faker->randomFloat(2, 50, 150),
-                    'high_credit'=>($this->faker->numberBetween(2, 13) * 100),
+                    'id_number'=>'00000000',
+                    'id_state'=>'TX',
+                    'ssn'=>'000-00-0000',
+                    'hphone'=>'000-000-0000',
+                    'wphone'=>'000-000-0000',
+                    'payment_amt'=>57.00,
+                    'high_credit'=>1300,
                     'high_terms'=>12,
-                    'current_credit'=>($this->faker->numberBetween(2, 13) * 100),
+                    'current_credit'=>1000,
                     'current_terms'=>12
                 );
+
             }
 
             $this->command->info('Batch #' . $a . ' of ' . ($totalRecordsToCreate / $chunkRecordCount) . ' Added');
@@ -45,4 +46,4 @@ class FakeLoansSeeder extends BaseSeeder {
 
 }
 
-            
+                
