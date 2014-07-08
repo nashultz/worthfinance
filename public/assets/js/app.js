@@ -6,13 +6,24 @@ app.config(function($routeProvider,$locationProvider) {
     controller: 'LoginController'
   });
 
+  $routeProvider.when('/dashboard', {
+    templateUrl:'views/dashboard.php',
+    controller: 'DashboardController'
+  });
+
   $routeProvider.otherwise({ redirectTo:'/login' });
 
   $locationProvider.html5Mode(true);
 });
 
 app.controller('LoginController', function($scope, $location, $http) {
-  $scope.login = function(credentials) {
-    return $http.post("/postLogin", credentials);
+  $scope.login = function() {
+    return $http.post("/postLogin", $scope.credentials).success(function() {
+      $location.path('/dashboard');
+    });
   };
+});
+
+app.controller('DashboardController', function() {
+
 });
