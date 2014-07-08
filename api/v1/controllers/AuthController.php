@@ -19,4 +19,10 @@ class AuthController extends BaseController {
 		return $this->form->processLogin();
 	}
 
+	public function getLogout()
+	{
+		Auth::logout();
+		return Redirect::json(array(), 200);
+	}
+
 }
