@@ -11,7 +11,7 @@
 |
 */
 
-require_once( base_path() . '/api/v1/loader.php');
+//require_once( base_path() . '/api/v1/routes.php');
 
 Blade::setContentTags('<%', '%>'); // for variables and all things Blade
 Blade::setEscapedContentTags('<%%', '%%>'); // for escaped data
