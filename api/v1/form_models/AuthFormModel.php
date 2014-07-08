@@ -23,13 +23,14 @@ class AuthFormModel extends BaseFormModel {
 		);
 
 		if (!$this->validate()) return Response::json(array('message'=>$this->getError()), 400);
-		if (!Auth::attempt($this->input)) return Response::json(array('message'=>'Invalid Login', 400));
+		if (!Auth::attempt($this->input)) return Response::json(array('message'=>'Invalid Login'), 400);
 		return Response::json(Auth::User(), 200);
 	}
 
 	public function processLogout()
 	{
-
+		Auth::logout();
+		return Redirect::json(array(), 200);
 	}
 
 	public function processRegister()

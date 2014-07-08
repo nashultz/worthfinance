@@ -1,7 +1,7 @@
 <?php namespace LoanPro\api\v1\controllers;
 
 use LoanPro\api\v1\form_models\AuthFormModel;
-use Response;
+use Redirect;
 
 class AuthController extends BaseController {
 
@@ -21,8 +21,7 @@ class AuthController extends BaseController {
 
 	public function getLogout()
 	{
-		Auth::logout();
-		return Redirect::json(array(), 200);
+		return $this->form->processLogout();
 	}
 
 }
