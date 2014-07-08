@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
-      <form ng-submit="login()">
+      <form id="loginForm" ng-submit="loginForm.$valid && login()" novalidate>
         <fieldset>
           <div>
             <div>
