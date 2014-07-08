@@ -28,13 +28,11 @@ app.factory("FlashService", function($rootScope) {
 });
 
 app.controller('LoginController', function($scope, $location, $http, FlashService) {
-  var loginError = function(response) {
-    FlashService.show(response.flash);
-  };
-
   $scope.login = function() {
     var login =  $http.post("/auth/login", $scope.credentials);
-    login.error(loginError);
+    login.error(function(response) {
+      FlashService.show(response.flash);
+    });
     login.success(FlashService.clear);
     login.success(function() {
       $location.path('/dashboard');
