@@ -22,6 +22,15 @@
 			</div>
 		</div>
 	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3">
+				<div id="flash" class="alert alert-danger" ng-show="flash">
+          {{ flash }}
+        </div>
+      </div>
+    </div>
+  </div>
 	<div ng-view></div>
 	<%js('angular/angular-beta.js')%>
 	<%js('angular/angular-route.js')%>

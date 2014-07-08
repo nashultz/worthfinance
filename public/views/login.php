@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
-      <form id="loginForm" ng-submit="loginForm.$valid && login()" novalidate>
+      <form name="loginForm" ng-submit="loginForm.$valid && login()" novalidate>
         <fieldset>
           <div>
             <div>
@@ -11,7 +11,7 @@
               <input type="password" name="password" placeholder="Password" ng-model="credentials.password" required />
             </div>
             <div>
-              <button type="submit">Log In</button>
+              <button type="submit" ng-disabled="loginForm.$invalid">Log In</button>
             </div>
           </div>
         </fieldset>

@@ -16,9 +16,27 @@ app.config(function($routeProvider,$locationProvider) {
   $locationProvider.html5Mode(true);
 });
 
-app.controller('LoginController', function($scope, $location, $http) {
+app.factory("FlashService", function($rootScope) {
+  return {
+    show: function(message) {
+      $rootScope.flash = message;
+    },
+    clear: function() {
+      $rootScope.flash = "";
+    }
+  }
+});
+
+app.controller('LoginController', function($scope, $location, $http, FlashService) {
+  var loginError = function(response) {
+    FlashService.show(response.flash);
+  };
+
   $scope.login = function() {
-    return $http.post("/auth/login", $scope.credentials).success(function() {
+    var login =  $http.post("/auth/login", $scope.credentials);
+    login.error(loginError);
+    login.success(FlashService.clear);
+    login.success(function() {
       $location.path('/dashboard');
     });
   };
