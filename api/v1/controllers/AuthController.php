@@ -28,7 +28,7 @@ class AuthController extends BaseController {
 		}
 		else
 		{
-			return Response::json( [ 'flash' => 'Login Successful', 'user' => Auth::User() ], 200);
+			return Response::json( [ 'flash' => 'Login Successful', 'user' => Auth::User() ], self::HTTP_OK);
 		}
 	}
 
@@ -36,11 +36,11 @@ class AuthController extends BaseController {
 	{
 		if (Auth::guest())
 		{
-			return Response::json([ 'flash' => 'Not Logged In' ], 400);
+			return Response::json([ 'flash' => 'Not Logged In' ], self::HTTP_BAD_REQUEST);
 		}
 
 		Auth::logout();
-		return Response::json( [ 'flash' => 'Logged Out Successfully' ], 200);
+		return Response::json( [ 'flash' => 'Logged Out Successfully' ], self::HTTP_OK);
 	}
 
 }
