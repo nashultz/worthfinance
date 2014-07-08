@@ -1,6 +1,7 @@
 <?php namespace LoanPro\api\v1\controllers;
 
 use Controller;
+use Redirect;
 
 class BaseController extends Controller {
 

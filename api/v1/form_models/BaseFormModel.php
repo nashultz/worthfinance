@@ -6,13 +6,18 @@ class BaseFormModel {
 
 	protected $validator;
 
-	public function validate()
+	public function __construct()
 	{
-		$this->validator = Validator::make($this->input, $this->rules, $this->messages);
+		
+	}
+
+	public function validate($input)
+	{
+		$this->validator = Validator::make($input, $this->rules, $this->messages);
 		return $this->validator->passes();
 	}
 
-	public function getError()
+	public function getValidationError()
 	{
 		$messages = $this->validator->messages();
 		return $messages->first();
