@@ -18,7 +18,7 @@ app.config(function($routeProvider,$locationProvider) {
 
 app.controller('LoginController', function($scope, $location, $http) {
   $scope.login = function() {
-    return $http.post("/postLogin", $scope.credentials).success(function() {
+    return $http.post("/auth/login", $scope.credentials).success(function() {
       $location.path('/dashboard');
     });
   };
