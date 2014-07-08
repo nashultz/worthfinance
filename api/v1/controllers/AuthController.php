@@ -36,7 +36,7 @@ class AuthController extends BaseController {
 	{
 		if (Auth::guest())
 		{
-			return Response::json([ 'flash' => 'Not Logged In' ], self::HTTP_BAD_REQUEST);
+			return Response::json([ 'flash' => 'Not Logged In' ], self::HTTP_UNAUTHORIZED);
 		}
 
 		Auth::logout();
