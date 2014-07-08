@@ -6,7 +6,7 @@ class LoginFormModel extends BaseFormModel {
 
 	protected $rules = array(
 		'username'=>'required',
-		'password'=>'required|min:4'
+		'password'=>'required|min:5'
 	);
 
 	protected $messages = array(
