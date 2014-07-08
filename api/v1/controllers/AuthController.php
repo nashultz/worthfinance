@@ -24,7 +24,7 @@ class AuthController extends BaseController {
 		}
 		else if (!$this->form->perform(Input::only('username', 'password'	)))
 		{
-			return Response::json( [ 'flash' => 'Invalid Login' ], self::HTTP_UNAUTHROIZED);
+			return Response::json( [ 'flash' => 'Invalid Login' ], self::HTTP_UNAUTHORIZED);
 		}
 		else
 		{
