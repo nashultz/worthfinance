@@ -8,7 +8,7 @@
               <input type="text" name="username" placeholder="Username" ng-model="credentials.username" required />
             </div>
             <div>
-              <input type="password" name="password" placeholder="Password" ng-model="credentials.password" required />
+              <input type="password" name="password" placeholder="Password" ng-model="credentials.password" ng-minlength="6" required />
             </div>
             <div>
               <button type="submit" ng-disabled="loginForm.$invalid">Log In</button>
