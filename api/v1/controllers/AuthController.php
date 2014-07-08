@@ -20,11 +20,11 @@ class AuthController extends BaseController {
 
 		if (!$this->form->validate(Input::only('username','password')))
 		{
-			return Response::json([ 'message' => $this->form->getValidationError() ], 400);
+			return Response::json([ 'flash' => $this->form->getValidationError() ], self::HTTP_PRECONDITION_FAILED);
 		}
 		else if (!$this->form->perform(Input::only('username', 'password'	)))
 		{
-			return Response::json( [ 'message' => 'Invalid Login' ], 400);
+			return Response::json( [ 'flash' => 'Invalid Login' ], self::HTTP_UNAUTHROIZED);
 		}
 		else
 		{
@@ -36,11 +36,11 @@ class AuthController extends BaseController {
 	{
 		if (Auth::guest())
 		{
-			return Response::json([ 'message' => 'Not Logged In' ], 400);
+			return Response::json([ 'flash' => 'Not Logged In' ], 400);
 		}
 
 		Auth::logout();
-		return Response::json( [ 'message' => 'Logged Out Successfully' ], 200);
+		return Response::json( [ 'flash' => 'Logged Out Successfully' ], 200);
 	}
 
 }
