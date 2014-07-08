@@ -1,7 +1,6 @@
 <?php namespace LoanPro\api\v1\form_models\auth;
 
 use LoanPro\api\v1\form_models\BaseFormModel;
-use Auth;
 
 class LoginFormModel extends BaseFormModel {
 
@@ -14,10 +13,5 @@ class LoginFormModel extends BaseFormModel {
 		'username.required'=>'Username is Required',
 		'password.required'=>'Password is Required'
 	);
-
-	public function perform($input)
-	{
-		return Auth::attempt($input);
-	}
 
 }

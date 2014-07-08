@@ -22,7 +22,7 @@ class AuthController extends BaseController {
 		{
 			return Response::json([ 'flash' => $this->form->getValidationError() ], self::HTTP_PRECONDITION_FAILED);
 		}
-		else if (!$this->form->perform(Input::only('username', 'password'	)))
+		else if (!Auth::attempt(Input::only('username', 'password')))
 		{
 			return Response::json( [ 'flash' => 'Invalid Login' ], self::HTTP_UNAUTHORIZED);
 		}
