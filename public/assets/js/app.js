@@ -18,7 +18,8 @@ app.config(function($routeProvider,$locationProvider) {
 
 app.factory("FlashService", function($rootScope) {
   return {
-    show: function(message) {
+    show: function(message, alert) {
+      $rootScope.alert = alert;
       $rootScope.flash = message;
     },
     clear: function() {
@@ -28,17 +29,22 @@ app.factory("FlashService", function($rootScope) {
 });
 
 app.controller('LoginController', function($scope, $location, $http, FlashService) {
-  var loginError = function(response) {
-    FlashService.show(response.flash);
-  };
 
   $scope.login = function() {
     var login =  $http.post("/auth/login", $scope.credentials);
-    login.error(loginError);
-    login.success(FlashService.clear);
+    
+    login.error(function(response) {
+      FlashService.show(response.flash, 'danger');
+    });
+
+    login.success(function(response) {
+      FlashService.show(response.flash, 'success');
+    });
+    
     login.success(function() {
       $location.path('/dashboard');
     });
+
   };
 });
 
