@@ -1,26 +1,20 @@
-'use strict';
+var app = angular.module("app", ['ngRoute']);
 
-var worthApp = angular.module('worthApp', [
-  	'ngRoute'
-]);
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/login', {
+    templateUrl:'views/login.php',
+    controller: 'LoginController'
+  });
 
-worthApp.config(['$routeProvider', '$provide', function($routeProvider, $provide) {
-	$routeProvider
-		.when('/', {
-			redirectTo: '/dashboard'
-		})
-	;
-
-	// with this, you can use $log('Message') same as $log.info('Message');
-	$provide.decorator('$log', function($delegate) {
-        // create a new function to be returned below as the $log service (instead of the $delegate)
-        function logger() {
-            // if $log fn is called directly, default to "info" message
-            logger.info.apply(logger, arguments);
-        }
-        // add all the $log props into our new logger fn
-        angular.extend(logger, $delegate);
-        return logger;
-    });
-
+  $routeProvider.otherwise({ redirectTo:'/login' });
 }]);
+
+app.controller('LoginController', function($scope, $location, $http) {
+  $scope.credentials = {
+      username: '',
+      password: ''
+  };
+  $scope.login = function($http) {
+    console.log('logged in');
+  };
+});

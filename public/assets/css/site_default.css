@@ -13,3 +13,7 @@ body {
   background:url(../img/mybg.png) #fff;
   direction:ltr;
 }
+
+form input {
+  width: 100%;
+}
