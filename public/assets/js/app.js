@@ -14,7 +14,7 @@ app.controller('LoginController', function($scope, $location, $http) {
       username: '',
       password: ''
   };
-  $scope.login = function($http) {
-    return $http.post('/postLogin');
+  $scope.login = function($http, credentials) {
+    return $http.post("/postLogin", credentials);
   };
 });
