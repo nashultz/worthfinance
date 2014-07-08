@@ -11,10 +11,7 @@
 |
 */
 
-//require_once( base_path() . '/api/v1/routes.php');
-
-Blade::setContentTags('<%', '%>'); // for variables and all things Blade
-Blade::setEscapedContentTags('<%%', '%%>'); // for escaped data
+require_once( base_path() . '/api/v1/loader.php');
 
 /*
 Route::get('/', function()
@@ -22,7 +19,3 @@ Route::get('/', function()
 	return View::make('site_default');
 });
 */
-
-Route::get('{any}', function() {
-	return View::make('site_default');
-})->where('any','.*');
