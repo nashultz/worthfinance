@@ -4,6 +4,7 @@ use LoanPro\api\v1\form_models\auth\LoginFormModel;
 use Response;
 use Input;
 use Auth;
+use View;
 
 class AuthController extends BaseController {
 
@@ -12,6 +13,11 @@ class AuthController extends BaseController {
 	public function __construct()
 	{
 		parent::__construct();
+	}
+
+	public function getLogin()
+	{
+		return View::make('site_login');
 	}
 
 	public function postLogin()

@@ -1,22 +1,15 @@
-var app = angular.module("app", ['ngRoute']);
+var loginApp = angular.module("loginApp", ['ngRoute']);
 
-app.config(function($routeProvider,$locationProvider) {
-  $routeProvider.when('/login', {
-    templateUrl:'views/login.php',
+loginApp.config(function($routeProvider,$locationProvider) {
+  $routeProvider.when('/auth/login', {
+    templateUrl:'views/login.blade.php',
     controller: 'LoginController'
   });
-
-  $routeProvider.when('/dashboard', {
-    templateUrl:'views/dashboard.php',
-    controller: 'DashboardController'
-  });
-
-  $routeProvider.otherwise({ redirectTo:'/login' });
 
   $locationProvider.html5Mode(true);
 });
 
-app.factory("FlashService", function($rootScope) {
+loginApp.factory("FlashService", function($rootScope) {
   return {
     show: function(message, alert) {
       $rootScope.alert = alert;
@@ -28,7 +21,7 @@ app.factory("FlashService", function($rootScope) {
   }
 });
 
-app.controller('LoginController', function($scope, $location, $http, FlashService) {
+loginApp.controller('LoginController', function($scope, $location, $http, FlashService) {
 
   $scope.login = function() {
     var login =  $http.post("/auth/login", $scope.credentials);
@@ -42,8 +35,4 @@ app.controller('LoginController', function($scope, $location, $http, FlashServic
     });
 
   };
-});
-
-app.controller('DashboardController', function() {
-
 });
