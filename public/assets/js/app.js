@@ -37,10 +37,6 @@ app.controller('LoginController', function($scope, $location, $http, FlashServic
       FlashService.show(response.flash, 'danger');
     });
 
-    login.success(function(response) {
-      FlashService.show(response.flash, 'success');
-    });
-    
     login.success(function() {
       $location.path('/dashboard');
     });
