@@ -7,6 +7,8 @@
     return Redirect::to('auth/login');
   });
 
-  Route::get('dashboard', function() {
+  Route::get('dashboard', array('before' => 'auth', function()
+{
+    // Only authenticated users may enter...
     return Redirect::to('admin/dashboard');
-  });
+}));

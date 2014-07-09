@@ -11,7 +11,7 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-  <%css('site_default.css')%>
+  <%css('site_login.css')%>
 
   <%js('angular/angular-beta.js')%>
   <%js('angular/angular-route.js')%>
