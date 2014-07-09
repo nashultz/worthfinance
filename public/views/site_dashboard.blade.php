@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="worthApp">
 <head>
   <meta charset="utf-8">
   <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
@@ -26,11 +26,27 @@
   <script type="text/javascript" src="http://code.jquery.com/color/jquery.color.plus-names-2.1.2.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/timelinejs/2.32.0/js/storyjs-embed.js"></script>-->
-  <%js('app.js')%>
+  <%js('worthApp.js')%>
   
   <base href="/">
 </head>
-  <body>
+  <body ng-controller="DashboardController">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="text-center">WorthFinance Corporation <small>Dashboard</small></h1>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+          <div id="flash" class="alert alert-{{ alert }}" ng-show="flash">
+            {{ flash }}
+          </div>
+        </div>
+      </div>
+    </div>
     <div ng-view></div>
   </body>
 </html>
