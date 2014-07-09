@@ -2,6 +2,7 @@
 
 use Response;
 use View;
+use Auth;
 
 class AdminController extends BaseController {
 
@@ -14,6 +15,8 @@ class AdminController extends BaseController {
 
   public function getDashboard()
   {
+    $user = Auth::user()->toJson();
+    dd($user);
     return View::make('site_dashboard');
   }
 
