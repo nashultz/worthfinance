@@ -23,7 +23,7 @@ loginApp.factory("FlashService", function($rootScope) {
   }
 });
 
-loginApp.controller('LoginController', function($scope, $location, $http, FlashService) {
+loginApp.controller('LoginController', function($scope, $window, $http, FlashService) {
 
   $scope.login = function() {
     var login =  $http.post("/auth/login", $scope.credentials);
@@ -37,9 +37,7 @@ loginApp.controller('LoginController', function($scope, $location, $http, FlashS
 
     // Redirect Flash Message
     login.success(function() {
-      $location.path('/dashboard'); // This doesn't redirect, it only changes url (notice by refreshing afterwards...);
-      // People state to use $window.location = 'http://siteaddress'
-      // $window.location.href = '/dashboard' // MIGHT
+      $window.location.href = 'admin/dashboard';
     });
 
   };

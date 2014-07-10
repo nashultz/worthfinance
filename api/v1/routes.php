@@ -1,24 +1,18 @@
 <?php
 
-  // Redirect Routes
-  Route::get('/', function() {
-  	return Redirect::route('site.login');
-  });
-
-  Route::get('login', function() {
-  	return Redirect::route('site.login');
-  });
+  // RESTful Routes
+	Route::controller('auth', 'LoanPro\api\v1\controllers\AuthController');
+  Route::controller('admin', 'LoanPro\api\v1\controllers\AdminController');
 
   // View Routes
-  Route::get('auth/login', array('as'=>'site.login', 'uses'=>'ViewController@getLogin'));
+  Route::get('/', function() { return Redirect::route('site.login'); });
+  Route::get('login', function() { return Redirect::route('site.login'); });
+  Route::get('auth/login', array('as'=>'site.login', 'do'=>function() { return View::make9('site_login'); }));
 
   // AUTH Secured Routes
   Route::group(array('before'=>'auth'), function() {
 
   	// Dashboard Route
-  	Route::get('dashboard', array('as'=>'site.dashboard', 'uses'=>'ViewController@getDashboard'));
+  	Route::get('dashboard', function() { return Redirect::to('admin/dashboard'); });
 
   }); 
-
-  // RESTful Controller Routes
-  Route::controller('auth', 'LoanPro\api\v1\controllers\AuthController');

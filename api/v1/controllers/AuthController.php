@@ -5,6 +5,7 @@ use Response;
 use Input;
 use Auth;
 use View;
+use Redirect;
 
 class AuthController extends BaseController {
 
@@ -46,7 +47,7 @@ class AuthController extends BaseController {
 		}
 
 		Auth::logout();
-		return Response::json( [ 'flash' => 'Logged Out Successfully' ], self::HTTP_OK);
+		return Redirect::to('/');
 	}
 
 }
