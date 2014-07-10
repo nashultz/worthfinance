@@ -1,5 +1,7 @@
 <?php
 
+//dd(array(__DIR__.'/../public/views'));
+
 return array(
 
 	/*
