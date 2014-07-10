@@ -13,11 +13,11 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <%css('site_default.css')%>
 
-  <%js('angular/angular-beta.js')%>
-  <%js('angular/angular-route.js')%>
-  <!--<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+  <%js('angular/angular-route.js')%>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <!--<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.4/jquery.easypiechart.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
@@ -27,26 +27,26 @@
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/timelinejs/2.32.0/js/storyjs-embed.js"></script>-->
   <%js('worthApp.js')%>
+  <%js('directives/appDirectives.js')%>
+  <%js('jarvis.js')%>
   
   <base href="/">
 </head>
   <body ng-controller="DashboardController">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <h1 class="text-center">Worth Finance Corporation <small>Dashboard</small></h1>
-        </div>
+
+    <!-- HEADER -->
+    <header id="header" ng-include="'views/includes/header.blade.php'"></header>
+    <!-- END HEADER -->
+
+    <!-- Left panel : Navigation area -->
+    <aside id="left-panel"><span data-ng-include="'views/includes/left-panel.blade.php'"></span></aside>
+    <!-- END NAVIGATION -->
+
+    <div id="main" role="main">
+      <div id="flash" class="alert alert-{{ alert }}" ng-show="flash">
+        {{ flash }}
       </div>
+      <div ng-view></div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-          <div id="flash" class="alert alert-{{ alert }}" ng-show="flash">
-            {{ flash }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div ng-view></div>
   </body>
 </html>

@@ -18,11 +18,11 @@ form input {
   width: 100%;
 }
 
-.ng-dirty.ng-invalid {
-  border-color: #fa7873;
+input.ng-dirty.ng-invalid {
+  border: 2px solid #fa7873;
 }
-.ng-dirty.ng-valid {
-  border-color: #78fa89;
+input.ng-dirty.ng-valid {
+  border: 2px solid #78fa89;
 }
 
 .form {
