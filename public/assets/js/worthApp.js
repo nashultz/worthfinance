@@ -39,17 +39,16 @@ worthApp.factory("UserService", function($rootScope, $http) {
 
 });
 
-worthApp.factory("OfficeService", function($http) {
+worthApp.factory("OfficeService", function($http, $rootScope) {
 
   return {
 
-    count: function() {
+    getAll: function() {
 
-      return 123123412312;
+      var oa = $http.get('/offices/all');
 
-      $http.get('/offices/count').success(function(response) {
-        console.log(response);
-        //return response;
+      oa.success(function(response) {
+        $rootScope.offices = response;
       });
 
     }
@@ -57,10 +56,24 @@ worthApp.factory("OfficeService", function($http) {
 
 });
 
-worthApp.controller('DashboardController', function($scope, OfficeService, UserService) {
+worthApp.controller('DashboardController', function($rootScope, $scope, OfficeService, UserService) {
+
+  UserService.get();
+
+  OfficeService.getAll();
 
   $scope.getNumberOfOffices = function() {
-    return OfficeService.count();
+    /*var count = 0;
+
+    angular.forEach($rootScope.offices, function(office) {
+      count += office.name ? 1 : 0;
+    });
+
+    return count;*/
+
+    var o = $rootScope.offices;
+
+    return o.length;
   }
   //$scope.offices = OfficeService.getAll();
 
