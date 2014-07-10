@@ -14,5 +14,6 @@
 
   	// Dashboard Route
   	Route::get('dashboard', function() { return Redirect::to('admin/dashboard'); });
+    Route::controller('offices', 'LoanPro\api\v1\controllers\OfficeController');
 
   }); 

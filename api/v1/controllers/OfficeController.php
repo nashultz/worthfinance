@@ -1,10 +1,17 @@
 <?php namespace LoanPro\api\v1\controllers;
 
+use LoanPro\api\v1\models\Office;
+
 class OfficeController extends BaseController {
 
-	public function getOffices()
+	public function getCount()
 	{
+		return Office::count();
+	}
 
+	public function getAll()
+	{
+		return Office::all();
 	}
 
 	public function getOffice($office)

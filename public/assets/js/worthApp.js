@@ -39,9 +39,30 @@ worthApp.factory("UserService", function($rootScope, $http) {
 
 });
 
-worthApp.controller('DashboardController', function(UserService, $scope, $http) {
+worthApp.factory("OfficeService", function($http) {
 
-  UserService.get();
+  return {
+
+    count: function() {
+
+      return 123123412312;
+
+      $http.get('/offices/count').success(function(response) {
+        console.log(response);
+        //return response;
+      });
+
+    }
+  }
+
+});
+
+worthApp.controller('DashboardController', function($scope, OfficeService, UserService) {
+
+  $scope.getNumberOfOffices = function() {
+    return OfficeService.count();
+  }
+  //$scope.offices = OfficeService.getAll();
 
 });
 
