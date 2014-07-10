@@ -32,7 +32,7 @@ worthApp.factory("UserService", function($rootScope, $http) {
       var u =  $http.get("/admin/user");
 
       u.success(function(response) {
-        $rootScope.user = response.user; // WORKS HERE....
+        $rootScope.user = response;
       });
     }
   }

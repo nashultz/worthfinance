@@ -20,7 +20,7 @@ class AdminController extends BaseController {
 
   public function getUser()
   {
-    return Response::json(array('user'=>Auth::User()), 200);
+    return Auth::User();
   }
 
 }
