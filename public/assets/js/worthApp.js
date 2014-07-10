@@ -25,8 +25,24 @@ worthApp.factory("FlashService", function($rootScope) {
   }
 });
 
-worthApp.controller('DashboardController', function($scope, $http) {
-  $scope.user = $http.get('admin/user');
+worthApp.factory("UserService", function($rootScope, $http) {
+
+  return {
+    get: function() {
+      var u =  $http.get("/admin/user");
+
+      u.success(function(response) {
+        $rootScope.user = response.user; // WORKS HERE....
+      });
+    }
+  }
+
+});
+
+worthApp.controller('DashboardController', function(UserService, $scope, $http) {
+
+  UserService.get();
+
 });
 
 angular.module('app.main', [])
