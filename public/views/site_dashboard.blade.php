@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-  <title> WorthFinance </title>
+  <title> Worth Finance </title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -34,7 +34,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <h1 class="text-center">WorthFinance Corporation <small>Dashboard</small></h1>
+          <h1 class="text-center">Worth Finance Corporation <small>Dashboard</small></h1>
         </div>
       </div>
     </div>
