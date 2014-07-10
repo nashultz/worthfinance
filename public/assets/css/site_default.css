@@ -111,6 +111,7 @@ aside {
   width:100%;
   margin:0!important;
   border-bottom:1px solid #525151;
+  /*border-top:1px solid #525151;*/
 }
 
 .login-info a {

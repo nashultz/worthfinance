@@ -16,7 +16,12 @@ class AdminController extends BaseController {
   public function getDashboard()
   {
     $user = Auth::user()->toJson();
-    return View::make('site_dashboard');
+    return View::make('site_dashboard',compact('user'));
+  }
+
+  public function getUser()
+  {
+    return Auth::user();
   }
 
 }
