@@ -29,10 +29,6 @@ worthApp.controller('DashboardController', function($scope, $http) {
   $scope.user = $http.get('admin/user');
 });
 
-worthApp.controller('DashboardUserController',function($scope, $http) {
-  $scope.users = $http.get('admin/user');
-});
-
 angular.module('app.main', [])
   // initiate body
   .directive('body', function() {
