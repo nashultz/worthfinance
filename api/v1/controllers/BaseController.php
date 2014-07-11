@@ -19,7 +19,8 @@ class BaseController extends Controller {
 
 	public function missingMethod($parameters = array())
 	{
-	    return Redirect::to('/');
+		if (Auth::guest()) return Redirect::route('site.login');
+		return Redirect::route('site.dashboard');
 	}
 
 }

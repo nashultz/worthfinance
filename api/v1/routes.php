@@ -12,7 +12,7 @@
   Route::group(array('before'=>'auth'), function() {
 
   	// Dashboard Route
-  	Route::get('dashboard', function() { return Redirect::to('admin/dashboard/index'); });
+  	Route::get('dashboard', array('as'=>'site.dashboard', 'do'=>function() { return Redirect::to('admin/dashboard/index'); }));
     Route::group(array('prefix' => 'admin'), function()
     {
       // Offices Route
