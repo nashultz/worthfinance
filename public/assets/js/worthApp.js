@@ -5,78 +5,17 @@ var worthApp = angular.module("worthApp", [
   ]);
 
 worthApp.config(function($routeProvider,$locationProvider) {
-  $routeProvider.when('/admin/dashboard', {
-    templateUrl:'views/dashboard.blade.php',
-    controller: 'DashboardController'
+  $routeProvider.when('/admin/dashboard/index', {
+    templateUrl:'views/dashboard/dashboard.php',
+    controller: 'DashboardCtrl'
+  });
+
+  $routeProvider.when('admin/offices/all', {
+    templateUrl:'views/offices/officeindex.php',
+    controller: 'OfficesCtrl'
   });
 
   $locationProvider.html5Mode(true);
-});
-
-worthApp.factory("FlashService", function($rootScope) {
-  return {
-    show: function(message, alert) {
-      $rootScope.alert = alert;
-      $rootScope.flash = message;
-    },
-    clear: function() {
-      $rootScope.flash = "";
-    }
-  }
-});
-
-worthApp.factory("UserService", function($rootScope, $http) {
-
-  return {
-    get: function() {
-      var u =  $http.get("/admin/user");
-
-      u.success(function(response) {
-        $rootScope.user = response;
-      });
-    }
-  }
-
-});
-
-worthApp.factory("OfficeService", function($http, $rootScope) {
-
-  return {
-
-    getAll: function() {
-
-      var oa = $http.get('/offices/all');
-
-      oa.success(function(response) {
-        $rootScope.offices = response;
-      });
-
-    }
-  }
-
-});
-
-worthApp.controller('DashboardController', function($rootScope, $scope, OfficeService, UserService) {
-
-  UserService.get();
-
-  OfficeService.getAll();
-
-  $scope.getNumberOfOffices = function() {
-    /*var count = 0;
-
-    angular.forEach($rootScope.offices, function(office) {
-      count += office.name ? 1 : 0;
-    });
-
-    return count;*/
-
-    var o = $rootScope.offices;
-
-    return o.length;
-  }
-  //$scope.offices = OfficeService.getAll();
-
 });
 
 angular.module('app.main', [])

@@ -4,7 +4,7 @@ use Response;
 use View;
 use Auth;
 
-class AdminController extends BaseController {
+class DashboardController extends BaseController {
 
   protected $form;
 
@@ -13,9 +13,9 @@ class AdminController extends BaseController {
     parent::__construct();
   }
 
-  public function getDashboard()
+  public function getIndex()
   {
-    return View::make('site_dashboard');
+    return View::make('site_default');
   }
 
   public function getUser()

@@ -3,7 +3,7 @@ var loginApp = angular.module("loginApp", ['ngRoute']);
 loginApp.config(function($routeProvider,$locationProvider) {
   
   $routeProvider.when('/auth/login', {
-    templateUrl:'views/login.blade.php',
+    templateUrl:'views/login/login.php',
     controller: 'LoginController'
   });
 
@@ -37,7 +37,7 @@ loginApp.controller('LoginController', function($scope, $window, $http, FlashSer
 
     // Redirect Flash Message
     login.success(function() {
-      $window.location.href = 'admin/dashboard';
+      $window.location.href = 'admin/dashboard/index';
     });
 
   };

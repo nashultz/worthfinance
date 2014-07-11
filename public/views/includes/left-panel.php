@@ -17,10 +17,13 @@
 
     <!-- NAVIGATION : This navigation is also responsive -->
 
-    <nav>
-      <ul>
-        <li class="active" title="Dashboard"><a href="admin/dashboard" target="_self" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i><span class="menu-item-parent"> Dashboard </span></a></li>
-      </ul>
-    </nav>
+    <navigation>
+      <nav:item data-view="admin/dashboard" data-icon="fa fa-lg fa-fw fa-home" title="Dashboard" />
+      <nav:group data-icon="fa fa-lg fa-fw fa-sitemap" title="Offices" >
+        <nav:item data-view="admin/offices/all" title="View Offices" />
+        <nav:item data-view="admin/offices/new" title="Add New Office" />
+        <nav:item data-view="admin/offices/something" title="Something Else Here" />
+      </nav:group>
+    </navigation>
     <span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span>
   </span>

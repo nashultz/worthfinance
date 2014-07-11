@@ -2,7 +2,6 @@
 
   // RESTful Routes
 	Route::controller('auth', 'LoanPro\api\v1\controllers\AuthController');
-  Route::controller('admin', 'LoanPro\api\v1\controllers\AdminController');
 
   // View Routes
   Route::get('/', function() { return Redirect::route('site.login'); });
@@ -13,7 +12,11 @@
   Route::group(array('before'=>'auth'), function() {
 
   	// Dashboard Route
-  	Route::get('dashboard', function() { return Redirect::to('admin/dashboard'); });
-    Route::controller('offices', 'LoanPro\api\v1\controllers\OfficeController');
-
+  	Route::get('dashboard', function() { return Redirect::to('admin/dashboard/index'); });
+    Route::group(array('prefix' => 'admin'), function()
+    {
+      // Offices Route
+      Route::controller('dashboard', 'LoanPro\api\v1\controllers\DashboardController');
+      Route::controller('offices', 'LoanPro\api\v1\controllers\OfficeController');
+    });
   }); 

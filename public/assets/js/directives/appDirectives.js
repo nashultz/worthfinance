@@ -1,6 +1,6 @@
-// directives for navigation
+//NAVIGATION Module
 angular.module('app.navigation', [])
-  .directive('navigation', function() {
+  .directive('navigation', function(){
     return {
       restrict: 'AE',
       controller: ['$scope', function($scope) {
@@ -8,10 +8,10 @@ angular.module('app.navigation', [])
       }],
       transclude: true,
       replace: true,
-      link: function(scope, element, attrs) {
+      link : function(scope, element, attrs) {
         if (!$topmenu) {
           if (!null) {
-            element.first().jarvismenu({
+            element.first().worthmenu({
               accordion : true,
               speed : $.menu_speed,
               closedSign : '<em class="fa fa-plus-square-o"></em>',
@@ -22,19 +22,12 @@ angular.module('app.navigation', [])
           }
         }
 
-        // SLIMSCROLL FOR NAV
-        if ($.fn.slimScroll) {
-          element.slimScroll({
-                height: '100%'
-            });
-        }
-
         scope.getElement = function() {
           return element;
         }
       },
-      template: '<nav><ul data-ng-transclude=""></ul></nav>'
-    };
+      template: '<nav><ul ng-transclude=""></ul></nav>'
+    }
   })
 
   .controller('NavGroupController', ['$scope', function($scope) {
@@ -47,7 +40,8 @@ angular.module('app.navigation', [])
       }
 
   }])
-  .directive('navGroup', function() {
+
+  .directive('navGroup', function(){
     return {
       restrict: 'AE',
       controller: 'NavGroupController',
@@ -66,8 +60,7 @@ angular.module('app.navigation', [])
             <span class="menu-item-parent" data-localize="{{ title }}">{{ title }}</span>\
           </a>\
           <ul data-ng-transclude=""></ul>\
-        </li>',
-
+        </li>'
     };
   })
 
@@ -85,7 +78,7 @@ angular.module('app.navigation', [])
       $scope.getItemUrl = function(view) {
         if (angular.isDefined($scope.href)) return $scope.href;
         if (!angular.isDefined(view)) return '';
-        return '#' + view;
+        return '' + view;
       };
 
       $scope.getItemTarget = function() {
@@ -93,7 +86,8 @@ angular.module('app.navigation', [])
       };
 
   }])
-  .directive('navItem', ['ribbon', '$window', function(ribbon, $window) {
+
+  .directive('navItem', ['$window', function($window) {
     return {
       require: ['^navigation', '^?navGroup'],
       restrict: 'AE',
@@ -108,54 +102,46 @@ angular.module('app.navigation', [])
       },
       link: function(scope, element, attrs, parentCtrls) {
         var navCtrl = parentCtrls[0],
-          navgroupCtrl = parentCtrls[1]
+          navgroupCrtl = parentCtrls[1]
 
         scope.$watch('active', function(newVal, oldVal) {
-          if (newVal) {
-            if (angular.isDefined(navgroupCtrl)) navgroupCtrl.setActive(true);
-            $window.document.title = scope.title;
+          if(newVal) {
+            if(angular.isDefined(navgroupCrtl)) navgroupCrtl.setActive(true);
+            $window.document.title = $scope.title;
             scope.setBreadcrumb();
           } else {
-            if (angular.isDefined(navgroupCtrl)) navgroupCtrl.setActive(false);
+            if(angular.isDefined(navgroupCrtl)) navgroupCrtl.setActive(false);
           }
         });
 
         scope.openParents = scope.isActive(scope.view);
-        scope.isChild = angular.isDefined(navgroupCtrl);
-        
+        scope.isChild = angular.isDefined(navgroupCrtl);
+
         scope.setBreadcrumb = function() {
-            var crumbs = [];
-            crumbs.push(scope.title);
-            // get parent menus
+          var crumbs = [];
+          crumbs.push(scope.title);
+          //get parent menus
           var test = element.parents('nav li').each(function() {
             var el = angular.element(this);
             var parent = el.find('.menu-item-parent:eq(0)');
             crumbs.push(parent.data('localize').trim());
-            if (scope.openParents) {
-              // open menu on first load
+            if(scope.openParents) {
+              //open menu on first load
               parent.trigger('click');
             }
           });
-          // this should be only fired upon first load so let's set this to false now
           scope.openParents = false;
-          ribbon.updateBreadcrumb(crumbs);
-          };
 
-          element.on('click', 'a[href!="#"]', function() {
-            if ($.root_.hasClass('mobile-view-activated')) {
-              $.root_.removeClass('hidden-menu');
-            }
-          });
-        
+        };
       },
       transclude: true,
       replace: true,
       template: '\
-        <li data-ng-class="{active: isActive(view)}">\
+        <li ng-class="{active: isActive(view)}">\
           <a href="{{ getItemUrl(view) }}" target="{{ getItemTarget() }}" title="{{ title }}">\
-            <i data-ng-if="hasIcon" class="{{ icon }}"><em data-ng-if="hasIconCaption"> {{ iconCaption }} </em></i>\
+            <i ng-if="hasIcon" class="{{ icon }}"><em ng-if="hasIconCaption"> {{ iconCaption }} </em></i>\
             <span ng-class="{\'menu-item-parent\': !isChild}" data-localize="{{ title }}"> {{ title }} </span>\
-            <span data-ng-transclude=""></span>\
+            <span ng-transclude=""></span>\
           </a>\
         </li>'
     };

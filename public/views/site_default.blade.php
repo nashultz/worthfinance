@@ -26,20 +26,22 @@
   <script type="text/javascript" src="http://code.jquery.com/color/jquery.color.plus-names-2.1.2.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/timelinejs/2.32.0/js/storyjs-embed.js"></script>-->
+  <%js('settings.js')%>
   <%js('worthApp.js')%>
+  <%js('services/appServices.js')%>
+  <%js('controllers/appControllers.js')%>
   <%js('directives/appDirectives.js')%>
-  <%js('jarvis.js')%>
   
   <base href="/">
 </head>
-  <body ng-controller="DashboardController">
+  <body>
 
     <!-- HEADER -->
-    <header id="header" ng-include="'views/includes/header.blade.php'"></header>
+    <header id="header" ng-include="'views/includes/header.php'"></header>
     <!-- END HEADER -->
 
     <!-- Left panel : Navigation area -->
-    <aside id="left-panel"><span data-ng-include="'views/includes/left-panel.blade.php'"></span></aside>
+    <aside id="left-panel"><span data-ng-include="'views/includes/left-panel.php'"></span></aside>
     <!-- END NAVIGATION -->
 
     <div id="main" role="main">
