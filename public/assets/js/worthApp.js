@@ -1,6 +1,7 @@
 var worthApp = angular.module("worthApp", [
   'ngRoute',
   'app.main',
+  'app.controllers',
   'app.navigation'
   ]);
 
@@ -10,7 +11,7 @@ worthApp.config(function($routeProvider,$locationProvider) {
     controller: 'DashboardCtrl'
   });
 
-  $routeProvider.when('admin/offices/all', {
+  $routeProvider.when('admin/siteoffice/index', {
     templateUrl:'views/offices/officeindex.php',
     controller: 'OfficesCtrl'
   });

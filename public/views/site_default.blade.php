@@ -34,7 +34,7 @@
   
   <base href="/">
 </head>
-  <body>
+  <body ng-controller="WorthAppController">
 
     <!-- HEADER -->
     <header id="header" ng-include="'views/includes/header.php'"></header>

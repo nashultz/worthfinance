@@ -1,25 +1,32 @@
-worthApp.controller('DashboardCtrl', function($rootScope, $scope, OfficeService, UserService) {
+angular.module('app.controllers', [])
 
-  UserService.get();
+  .controller('DashboardCtrl', function($rootScope, $scope, OfficeService, UserService) {
 
-  OfficeService.getAll();
+    UserService.get();
 
-  $scope.getNumberOfOffices = function() {
-    var count = 0;
+    OfficeService.getAll();
 
-    angular.forEach($rootScope.offices, function(office) {
-      count += office.name ? 1 : 0;
-    });
+    $scope.getNumberOfOffices = function() {
+      var count = 0;
 
-    return count;
-  }
-  //$scope.offices = OfficeService.getAll();
+      angular.forEach($rootScope.offices, function(office) {
+        count += office.name ? 1 : 0;
+      });
 
-});
+      return count;
+    }
+    //$scope.offices = OfficeService.getAll();
 
-worthApp.controller('OfficesCtrl', function($rootScope, $scope, OfficeService, UserService) {
+  })
 
-  UserService.get();
-  
-  $scope.offices = OfficeService.getAll();
-});
+  .controller('OfficesCtrl', function($rootScope, $scope, OfficeService, UserService) {
+
+    UserService.get();
+
+    $scope.offices = OfficeService.getAll();
+  })
+
+  .controller('WorthAppController', ['$scope', function($scope) {
+    // your main controller
+  }])
+;

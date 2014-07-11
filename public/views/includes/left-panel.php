@@ -18,11 +18,11 @@
     <!-- NAVIGATION : This navigation is also responsive -->
 
     <navigation>
-      <nav:item data-view="admin/dashboard" data-icon="fa fa-lg fa-fw fa-home" title="Dashboard" />
-      <nav:group data-icon="fa fa-lg fa-fw fa-sitemap" title="Offices" >
-        <nav:item data-view="admin/offices/all" title="View Offices" />
-        <nav:item data-view="admin/offices/new" title="Add New Office" />
-        <nav:item data-view="admin/offices/something" title="Something Else Here" />
+      <nav:item view="dashboard" icon="fa fa-lg fa-fw fa-home" title="Dashboard" />
+      <nav:group icon="fa fa-lg fa-fw fa-sitemap" title="Offices" >
+        <nav:item view="siteoffice/index" title="View Offices" />
+        <nav:item view="admin/offices/new" title="Add New Office" />
+        <nav:item view="admin/offices/something" title="Something Else Here" />
       </nav:group>
     </navigation>
     <span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span>

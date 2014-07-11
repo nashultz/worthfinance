@@ -1,6 +1,7 @@
 <?php namespace LoanPro\api\v1\controllers;
 
 use LoanPro\api\v1\models\Office;
+use View;
 
 class OfficeController extends BaseController {
 

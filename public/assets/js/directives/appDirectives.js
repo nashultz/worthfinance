@@ -78,7 +78,7 @@ angular.module('app.navigation', [])
       $scope.getItemUrl = function(view) {
         if (angular.isDefined($scope.href)) return $scope.href;
         if (!angular.isDefined(view)) return '';
-        return '' + view;
+        return 'admin/' + view;
       };
 
       $scope.getItemTarget = function() {
@@ -107,7 +107,6 @@ angular.module('app.navigation', [])
         scope.$watch('active', function(newVal, oldVal) {
           if(newVal) {
             if(angular.isDefined(navgroupCrtl)) navgroupCrtl.setActive(true);
-            $window.document.title = $scope.title;
             scope.setBreadcrumb();
           } else {
             if(angular.isDefined(navgroupCrtl)) navgroupCrtl.setActive(false);
