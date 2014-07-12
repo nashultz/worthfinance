@@ -4,7 +4,7 @@
       <span> <!-- User image size is adjusted inside CSS, it should stay as is --> 
         
         <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
-          <img src="#" alt="me" class="online"> 
+          <img src="assets/img/avatars/male.png" alt="me" class="online"> 
           <span>
             {{ user.username }} 
           </span>

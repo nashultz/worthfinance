@@ -40,7 +40,7 @@ angular.module('app.main', [])
         
             // ask verification
             $.SmartMessageBox({
-              title : "<i class='fa fa-sign-out txt-color-orangeDark'></i> Logout <span class='txt-color-orangeDark'><strong>" + $('#show-shortcut').text() + "</strong></span> ?",
+              title : "<i class='fa fa-sign-out txt-color-red'></i> Logout <span class='txt-color-red'><strong>" + $('#show-shortcut').text() + "</strong></span> ?",
               content : $this.data('logout-msg') || "You can improve your security further after logging out by closing this opened browser",
               buttons : '[No][Yes]'
         

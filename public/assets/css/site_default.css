@@ -925,6 +925,20 @@ cursor: pointer;
 #ribbon .breadcrumb li:last-child,#ribbon .breadcrumb>.active {
   color:#333!important}
 
+img.online{border-left-color:#0AA699!important}
+
+  .chat-body li.message img.online {
+  border-left-color:#00a300}
+
+.chat-body li.message img.offline {
+  border-left-color:#ddd}
+
+.chat-body li.message img.busy {
+  border-left-color:#A90329}
+
+.chat-body li.message img.away {
+  border-left-color:#ffc40d}
+
 
 
 .flag {
