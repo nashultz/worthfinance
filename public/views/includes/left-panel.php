@@ -20,7 +20,7 @@
     <navigation>
       <nav:item view="dashboard" icon="fa fa-lg fa-fw fa-home" title="Dashboard" />
       <nav:group icon="fa fa-lg fa-fw fa-sitemap" title="Offices" >
-        <nav:item view="siteoffice/index" title="View Offices" />
+        <nav:item view="offices" title="View Offices" target="_self" />
         <nav:item view="admin/offices/new" title="Add New Office" />
         <nav:item view="admin/offices/something" title="Something Else Here" />
       </nav:group>

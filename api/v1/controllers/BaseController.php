@@ -19,13 +19,8 @@ class BaseController extends Controller {
 
 	public function missingMethod($parameters = array())
 	{
-<<<<<<< HEAD
-		if (Auth::guest()) View::make('site_login');
-		return View::make('site_dashboard');
-=======
 		if (Auth::guest()) return Redirect::route('site.login');
-		return Redirect::route('site.dashboard');
->>>>>>> origin/master
+		return Redirect::to('#/dashboard');
 	}
 
 }

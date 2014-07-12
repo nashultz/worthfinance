@@ -1,6 +1,38 @@
+
+
 $topmenu = false;
 
+$.root_ = $('body');
+$.left_panel = $('#left-panel');
+$.bread_crumb = $('#ribbon ol.breadcrumb');
+
 $.menu_speed = 235;
+
+jQuery(document).ready(function() {
+  /*
+   * Fire tooltips
+   */
+  if ($("[rel=tooltip]").length) {
+    $("[rel=tooltip]").tooltip();
+  }
+
+  $("[rel=tooltip]").tooltip();
+
+  $(document).mouseup(function(e) {
+    if (!$('.ajax-dropdown').is(e.target) && $('.ajax-dropdown').has(e.target).length === 0) {
+      $('.ajax-dropdown').fadeOut(150);
+      $('.ajax-dropdown').prev().removeClass("active");
+    }
+  });
+
+  $('button[data-btn-loading]').on('click', function() {
+    var btn = $(this);
+    btn.button('loading');
+    setTimeout(function() {
+      btn.button('reset');
+    }, 3000);
+  });
+});
 
 $.fn.extend({
 

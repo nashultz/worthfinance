@@ -1,42 +1,45 @@
-worthApp.factory("FlashService", function($rootScope) {
-  return {
-    show: function(message, alert) {
-      $rootScope.alert = alert;
-      $rootScope.flash = message;
-    },
-    clear: function() {
-      $rootScope.flash = "";
+angular.module('app.services', [])
+
+  .factory("FlashService", function($rootScope) {
+    return {
+      show: function(message, alert) {
+        $rootScope.alert = alert;
+        $rootScope.flash = message;
+      },
+      clear: function() {
+        $rootScope.flash = "";
+      }
     }
-  }
-});
+  })
 
-worthApp.factory("UserService", function($rootScope, $http) {
+  .factory("UserService", function($rootScope, $http) {
 
-  return {
-    get: function() {
-      var u =  $http.get("/admin/dashboard/user");
+    return {
+      get: function() {
+        var u =  $http.get("/admin/dashboard/user");
 
-      u.success(function(response) {
-        $rootScope.user = response;
-      });
+        u.success(function(response) {
+          $rootScope.user = response;
+        });
+      }
     }
-  }
 
-});
+  })
 
-worthApp.factory("OfficeService", function($http, $rootScope) {
+  .factory("OfficeService", function($http, $rootScope) {
 
-  return {
+    return {
 
-    getAll: function() {
+      getAll: function() {
 
-      var oa = $http.get('admin/offices/all');
+        var oa = $http.get('admin/offices/all');
 
-      oa.success(function(response) {
-        $rootScope.offices = response;
-      });
+        oa.success(function(response) {
+          $rootScope.offices = response;
+        });
 
+      }
     }
-  }
 
-});
+  })
+;

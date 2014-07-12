@@ -37,7 +37,7 @@ loginApp.controller('LoginController', function($scope, $window, $http, FlashSer
 
     // Redirect Flash Message
     login.success(function() {
-      $window.location.href = 'admin/dashboard/index';
+      $window.location.href = '/#/dashboard';
     });
 
   };

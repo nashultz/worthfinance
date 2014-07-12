@@ -17,7 +17,7 @@
   <script type="text/javascript" src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
   <%js('angular/angular-route.js')%>
-  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.js"></script>
   <!--<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.4/jquery.easypiechart.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
@@ -31,6 +31,7 @@
   <%js('services/appServices.js')%>
   <%js('controllers/appControllers.js')%>
   <%js('directives/appDirectives.js')%>
+  <%js('notification/WorthNotification.js')%>
   
   <base href="/">
 </head>
@@ -48,7 +49,13 @@
       <div id="flash" class="alert alert-{{ alert }}" ng-show="flash">
         {{ flash }}
       </div>
-      <div ng-view></div>
+      <!-- RIBBON -->
+      <div id="ribbon" data-ng-include="'views/includes/ribbon.php'" data-ribbon=""></div>
+      <!-- END RIBBON -->
+
+      <!-- MAIN CONTENT -->
+      <div id="content" ng-view="" class="view-animate"></div>
+      <!-- END MAIN CONTENT -->
     </div>
   </body>
 </html>
