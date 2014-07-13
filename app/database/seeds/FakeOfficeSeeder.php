@@ -7,21 +7,33 @@ class FakeOfficeSeeder extends BaseSeeder {
         DB::connection()->disableQueryLog();
         DB::table('offices')->delete();
 
-    	$total = 100;
+        $totalRecordsToCreate = 2000000;
+        $chunkRecordCount = 500;
+        $record = 1;
 
-        for ($i = 1; $i < $total; $i++)
+        for($a = 1; $a <= ($totalRecordsToCreate / $chunkRecordCount); $a++)
         {
-            Office::create(array(
-            	'id'=>$i,
-            	'name'=>$this->faker->company,
-            	'address'=>$this->faker->streetAddress,
-            	'city'=>$this->faker->city,
-            	'state'=>$this->faker->stateAbbr,
-            	'zip'=>$this->faker->postcode
-            ));
+            $array = array();
 
-            //$this->command->info('Office ' . $i . ' of ' . $total . ' Created');
+            for ($b = 1; $b <= $chunkRecordCount; $b++)
+            {
+                $array[] = array(
+                	'id'=>$record,
+                	'name'=> 'Company #' . $record,
+                	'address'=>'123 IDC Blvd',
+                	'city'=>'Somewhere',
+                	'state'=>'TX',
+                	'zip'=>'90210'
+                );
+
+                $record++;
+
+            }
+
+            $this->command->info('Batch #' . $a . ' of ' . ($totalRecordsToCreate / $chunkRecordCount) . ' Added');
+            DB::table('offices')->insert($array);
         }
+
     }
 
 }

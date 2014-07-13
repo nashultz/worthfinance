@@ -1,5 +1,8 @@
 <?php
 
+  Route::get('phpinfo', function() { dd(phpinfo()); });
+  Route::get('memtest', function() { dd(ini_get('memory_limit')); });
+
   // RESTful Routes
 	Route::controller('auth', 'LoanPro\api\v1\controllers\AuthController');
 
@@ -16,5 +19,6 @@
       // Offices Route
       Route::controller('dashboard', 'LoanPro\api\v1\controllers\DashboardController');
       Route::controller('offices', 'LoanPro\api\v1\controllers\OfficeController');
+      Route::controller('accounts', 'LoanPro\api\v1\controllers\AccountController');
     });
   }); 

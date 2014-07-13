@@ -42,4 +42,21 @@ angular.module('app.services', [])
     }
 
   })
+
+  .factory("AccountService", function($http, $rootScope) {
+
+    return {
+
+      getAll: function() {
+
+        var oa = $http.get('admin/accounts/all');
+
+        oa.success(function(response) {
+          $rootScope.offices = response;
+        });
+
+      }
+    }
+
+  })  
 ;

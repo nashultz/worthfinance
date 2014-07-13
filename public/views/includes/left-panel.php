@@ -24,6 +24,11 @@
         <nav:item view="admin/offices/new" title="Add New Office" />
         <nav:item view="admin/offices/something" title="Something Else Here" />
       </nav:group>
+      <nav:group icon="fa fa-lg fa-fw fa-sitemap" title="Accounts" >
+        <nav:item view="accounts" title="View Accounts" target="_self" />
+        <nav:item view="admin/accounts/new" title="Add New Account" />
+        <nav:item view="admin/accounts/something" title="Something Else Here" />
+      </nav:group>      
     </navigation>
     <span class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span>
   </span>

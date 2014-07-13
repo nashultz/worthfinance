@@ -12,7 +12,7 @@ class OfficeController extends BaseController {
 
 	public function getAll()
 	{
-		return Office::all();
+		return Office::take(10000)->get();
 	}
 
 	public function getOffice($office)

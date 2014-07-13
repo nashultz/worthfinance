@@ -24,6 +24,11 @@ angular.module("worthApp", [
       controller: 'OfficesCtrl'
     });
 
+    $routeProvider.when('/accounts', {
+      templateUrl:'views/accounts/accountsindex.php',
+      controller: 'AccountsCtrl'
+    });    
+
     $routeProvider.otherwise({redirectTo: '/dashboard'});
 
   })
