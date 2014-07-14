@@ -55,13 +55,7 @@ angular.module('app.controllers', [])
     //$scope.$on('$viewContentLoaded', function() {
       
     //});
-  }])
-
-  .controller('PageViewController', ['$scope', '$route', '$animate', function($scope, $route, $animate) {
-    // controler of the dynamically loaded views, for DEMO purposes only.
-    //$scope.$on('$viewContentLoaded', function() {
-      
-    }])  
+  }])  
 
   .controller('WorthAppController', ['$scope', function($scope) {
     // your main controller

@@ -49,10 +49,10 @@ angular.module('app.services', [])
 
       getAll: function() {
 
-        var oa = $http.get('admin/accounts/all');
+        var accts = $http.get('admin/accounts/all');
 
-        oa.success(function(response) {
-          $rootScope.offices = response;
+        accts.success(function(response) {
+          $rootScope.accounts = response;
         });
 
       }
